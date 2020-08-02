@@ -1,0 +1,73 @@
+package practice1;
+import java.util.ArrayList;
+import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.LinkedList;
+import java.util.TreeMap;
+
+
+public class employee_portfolios {
+	employee employees1 = new employee();
+	
+
+	public void readFile() throws FileNotFoundException, IOException{
+		FileReader fr = new FileReader("C:\\Users\\mars\\Desktop\\employee.txt");
+		BufferedReader br = new BufferedReader(fr);
+		String line =br.readLine();
+		List<employee> employees1 = new ArrayList<employee>();
+		while (line != null) {
+			String lines [] = line.split(",");
+			
+			System.out.println(lines[0]+ " : " + lines[1]);
+			employee Employees = new employee();
+			employees1.add(Employees);
+			
+			line = br.readLine();
+			
+		}
+		display(employees1);
+	}
+	
+	public static void display(List<employee> employees1) {
+		for (employee empolyees1 : employees1) {
+			System.out.println((( (employee) employees1).getName()+" "+((employee) employees1).getManager()));
+		}
+	
+	}
+	
+	
+	public static void main(String[] args) throws IOException{
+		employee_portfolios ep = new employee_portfolios();
+		ep.readFile();
+		Map<String,String> employee2 = new HashMap<String,String>(); 
+		employee2.put(employees1)
+		for (String name : employee2.keySet()){
+		System.out.println(name + " manager is: " + employee2.get(name)); 
+		}
+		Map<String,String> employee2Tree = new TreeMap<String,String>(employee2); 
+		for (String name : employee2Tree.keySet()){ 
+		System.out.println(name + " manager is: " + employee2.get(name));
+		}
+		List<String> pklist = employee2Tree.keyList(); 
+		LinkedList<String> pk = new LinkedList<String>(pklist); 
+
+		System.out.println(employee2(pk, employee2Tree)); 
+				
+	}
+	public static void printEmployee2(LinkedList<String> employee2key , Map<String, String> em){
+
+		if (employee2key.size() == 0 ){
+			return False;
+		}
+		else {
+			String name = employee2key.get(0);
+			employee2key.remove(0);
+			System.out.println(name + " manager is: " + em.get(name));
+			System.out.println(employee2(employee2key, em));
+		}
+	}
